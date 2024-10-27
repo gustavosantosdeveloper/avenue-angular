@@ -1,0 +1,28 @@
+<div class="mt-20 layout-column justify-content-center align-items-center">
+  <div class="mt-50 layout-row">
+    <div class="card outlined ml-20 mt-0" *ngFor="let tasks of stagesTasks;index as i;">
+      <div class="card-text">
+        <h4>{{this.stagesNames[i]}}</h4>
+        <ul class="styled mt-50" [attr.data-test-id]="'stage-'+ i">
+          <li *ngFor="let task of tasks; index as index;">
+            <div class="li-content layout-row justify-content-between align-items-center">
+                <span [attr.data-test-id]="generateTestId(task.name)+ '-name'">{{task.name}}</span>
+                <div class="icons">
+                  <button [id]="task.name +'back'"  (click)="previousStage(task)"  class="icon-only x-small mx-2"
+                          [attr.data-test-id]="generateTestId(task.name)+ '-back'">
+                    <i class="material-icons">arrow_back</i>
+                    
+                  </button>
+
+                  <button [id]="task.name +'forward'" (click)="nextStage(task)" class="icon-only x-small mx-2"
+                          [attr.data-test-id]="generateTestId(task.name)+ '-forward'">
+                    <i class="material-icons">arrow_forward</i>
+                  </button>
+                </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
